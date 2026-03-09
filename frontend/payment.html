@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Payment</title>
+  <style>
+    body { font-family: Arial; background: #f4f4f4; padding: 20px; text-align: center; }
+    .payment-box {
+      max-width: 400px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    h2 { margin-bottom: 10px; }
+    .summary {
+      margin: 15px 0;
+      font-size: 16px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #28a745;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="payment-box">
+    <h2>Confirm Your Booking</h2>
+    <div class="summary">
+      <p><strong>Movie:</strong> <span id="movieTitle"></span></p>
+      <p><strong>Seats:</strong> <span id="seats"></span></p>
+      <p><strong>Total Amount:</strong> ₹<span id="amount"></span></p>
+    </div>
+    <button onclick="makePayment()">Pay Now</button>
+  </div>
+
+  <script>
+    const movie = localStorage.getItem("movieTitle");
+    const seats = JSON.parse(localStorage.getItem("selectedSeats") || "[]");
+    const amount = localStorage.getItem("totalAmount");
+
+    document.getElementById("movieTitle").innerText = movie;
+    document.getElementById("seats").innerText = seats.join(", ");
+    document.getElementById("amount").innerText = amount;
+
+    function makePayment() {
+      alert("Payment Successful! Booking Confirmed for " + movie);
+      // Optionally: redirect to ticket page or clear storage
+      localStorage.clear();
+      window.location.href = "index.html";
+    }
+  </script>
+
+</body>
+</html>

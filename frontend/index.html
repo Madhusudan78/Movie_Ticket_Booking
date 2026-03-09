@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Book Movie Show - Movie Booking</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-image: url(images.jpg);
+    }
+    h2 {
+  background: rgba(247, 245, 245, 0.858); /* semi-transparent dark background */
+  color: rgb(27, 18, 18);
+  padding: 10px 20px;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+
+    /* Header styles */
+    .main-header {
+      background: white;
+      padding: 10px 20px;
+      box-shadow: 0 2px 4px rgba(240, 238, 238, 0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      position: relative;
+    }
+
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .logo span.red {
+      color: red;
+    }
+
+    .search-container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .search-container input {
+      width: 60%;
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    .right-section {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      position: relative;
+    }
+
+    .location {
+      font-size: 14px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .signin-btn {
+      background: #f84464;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .signin-btn:hover {
+      background: #d73755;
+    }
+
+    .hamburger {
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      border-top: 1px solid #eee;
+      padding-top: 10px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-size: 14px;
+    }
+
+    /* Dropdown styles */
+    .location-dropdown {
+      display: none;
+      position: absolute;
+      top: 30px;
+      left: 0;
+      background-color: white;
+      border: 1px solid #ccc;
+      max-height: 200px;
+      overflow-y: auto;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      z-index: 1000;
+      width: 150px;
+    }
+
+    .location-dropdown div {
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+
+    .location-dropdown div:hover {
+      background-color: #f0f0f0;
+    }
+
+    /* Movie section */
+    .slider {
+      display: flex;
+      gap: 20px;
+      padding: 20px;
+      overflow-x: auto;
+    }
+
+    .movie-card {
+      flex: 0 0 200px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 10px;
+      text-align: center;
+    }
+
+    .movie-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .movie-card button {
+      margin-top: 10px;
+      padding: 8px 12px;
+      border: none;
+      background: #007bff;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .movie-card button:hover {
+      background: #0056b3;
+    }
+
+    h2 {
+      margin-left: 20px;
+      color: #333;
+    }
+    .dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 160px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 12px 16px;
+  text-decoration: none;
+  color: #333;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
+
+.dropdown-menu a:last-child {
+  border-bottom: none;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f5f5f5;
+}
+
+  </style>
+</head>
+<body>
+
+  <header class="main-header">
+    <div class="top-bar">
+      <div class="logo"><span>Movie</span><span class="red">Ticket</span><span>Booking</span></div>
+      <div class="search-container">
+        <input type="text" placeholder="Search for Movies, Events, Plays, Sports and Activities">
+      </div>
+      <div class="right-section">
+        <div class="location" onclick="toggleLocationDropdown()" id="selectedLocation">Select Location &#9662;</div>
+        <div class="location-dropdown" id="locationDropdown">
+          <div onclick="selectLocation('Delhi-NCR')">Delhi-NCR</div>
+          <div onclick="selectLocation('Mumbai')">Mumbai</div>
+          <div onclick="selectLocation('Bangalore')">Bangalore</div>
+          <div onclick="selectLocation('Hyderabad')">Hyderabad</div>
+          <div onclick="selectLocation('Chennai')">Chennai</div>
+          <div onclick="selectLocation('Kolkata')">Kolkata</div>
+          <div onclick="selectLocation('Pune')">Pune</div>
+          <div onclick="selectLocation('Ahmedabad')">Ahmedabad</div>
+          <div onclick="selectLocation('Jaipur')">Jaipur</div>
+          <div onclick="selectLocation('Chandigarh')">Chandigarh</div>
+          <div onclick="selectLocation('Lucknow')">Lucknow</div>
+          <div onclick="selectLocation('Bhopal')">Bhopal</div>
+          <div onclick="selectLocation('Indore')">Indore</div>
+          <div onclick="selectLocation('Goa')">Goa</div>
+          <div onclick="selectLocation('Surat')">Surat</div>
+          <div onclick="selectLocation('Nagpur')">Nagpur</div>
+          <div onclick="selectLocation('Patna')">Patna</div>
+          <div onclick="selectLocation('Ranchi')">Ranchi</div>
+          <div onclick="selectLocation('Guwahati')">Guwahati</div>
+          <div onclick="selectLocation('Bhubaneswar')">Bhubaneswar</div>
+          <div onclick="selectLocation('Trivandrum')">Trivandrum</div>
+          <div onclick="selectLocation('Coimbatore')">Coimbatore</div>
+          <div onclick="selectLocation('Vadodara')">Vadodara</div>
+          <div onclick="selectLocation('Rajkot')">Rajkot</div>
+          <div onclick="selectLocation('Amritsar')">Amritsar</div>
+          <div onclick="selectLocation('Varanasi')">Varanasi</div>
+          <div onclick="selectLocation('Kanpur')">Kanpur</div>
+          <div onclick="selectLocation('Dehradun')">Dehradun</div>
+          <div onclick="selectLocation('Agra')">Agra</div>
+          <div onclick="selectLocation('Udaipur')">Udaipur</div>
+        </div>
+        <a href="login.html"><button class="signin-btn">Sign in</button></a>
+        <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+<div class="dropdown-menu" id="dropdownMenu">
+  <a href="index.html">Home</a>
+  <a href="login.html">Login</a>
+  <a href="register.html">Register</a>
+  <a href="admin.html">Admin Panel</a>
+</div>
+
+      </div>
+    </div>
+    <nav class="nav-links">
+      <a href="movies.html">Movies</a>
+      <a href="stream.html">Stream</a>
+      <a href="events.html">Events</a>
+      <a href="plays.html">Plays</a>
+      <a href="sports.html">Sports</a>
+      <a href="activities.html">Activities</a>
+      <a href="listyourshow.html">ListYourShow</a>
+    </nav>
+  </header>
+
+  <!-- Now Showing Section -->
+  <h2 class="white">Now Showing</h2>
+  <div class="slider" id="nowShowingSlider"></div>
+
+  <!-- Coming Soon Section -->
+  <h2>Coming Soon</h2>
+  <div class="slider" id="comingSoonSlider"></div>
+
+  <script>
+    // Dropdown logic
+    function toggleLocationDropdown() {
+      const dropdown = document.getElementById("locationDropdown");
+      dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+    }
+
+    function selectLocation(city) {
+      document.getElementById("selectedLocation").innerHTML = city + " &#9662;";
+      document.getElementById("locationDropdown").style.display = "none";
+    }
+
+    // Sample Movies
+    const nowShowing = [
+      { title: "Deadpool & Wolverine", poster: "Deadpool & Wolverine.jpeg", genre: "Action", language: "English", duration: "2h 14m", id: 1 },
+      { title: "Kalki 2898 AD", poster: "kalki.jpeg", genre: "Sci-Fi", language: "Hindi", duration: "2h 50m", id: 2 },
+      { title: "Auron Mein Kahan Dum Tha", poster: "auromeinkhadumtha.jpeg", genre: "Drama", language: "Hindi", duration: "2h 10m", id: 3 },
+      { title: "Saunkan Saunkanay 2", poster: "Saunkan Saunkanay 2.jpeg", genre: "Action", language: "Punjabi", duration: "2h 25m", id: 4 },
+      { title: "Bhairavam", poster: "Bhairavam.jpeg", genre: "Action", language: "Telugu", duration: "2h 35m", id: 5 },
+      { title: "The Bhootnii", poster: "The Bhootnii.jpeg", genre: "Harror", language: "Hindi", duration: "2h 10m", id: 6 },
+      { title: "Sikandar", poster: "Sikandar.jpeg", genre: "Action", language: "Hindi", duration: "2h 15m", id: 7 },
+      { title: "Bhool Chuk Maaf", poster: "Bhool Chuk Maaf.jpeg", genre: "Action", language: "Hindi", duration: "2h 01m", id: 8 },
+      { title: "Jewel Thief - The Heist Begins", poster: "ewel Thief - The Heist Begins.jpeg", genre: "Adventure/Action Thriller", language: "Hindi", duration: "1h 58m", id: 9 },
+      { title: "Ground Zero", poster: "Ground Zero.jpeg", genre: "Action/Thriller", language: "Hindi", duration: "2h 14m", id: 10 },
+      { title: "Jurassic World Rebirth", poster: "Jurassic World Rebirth.jpeg", genre: "Action/Sci-fi", language: "English", duration: "2h 13m", id: 11 },
+      { title: "Deadpool & Wolverine", poster: "images/deadpool.jpg", genre: "Action", language: "English", duration: "2h 14m", id: 1 },
+      { title: "Deadpool & Wolverine", poster: "images/deadpool.jpg", genre: "Action", language: "English", duration: "2h 14m", id: 1 },
+      { title: "Deadpool & Wolverine", poster: "images/deadpool.jpg", genre: "Action", language: "English", duration: "2h 14m", id: 1 },
+      { title: "Deadpool & Wolverine", poster: "images/deadpool.jpg", genre: "Action", language: "English", duration: "2h 14m", id: 1 },
+      { title: "Deadpool & Wolverine", poster: "images/deadpool.jpg", genre: "Action", language: "English", duration: "2h 14m", id: 1 },
+      { title: "Deadpool & Wolverine", poster: "images/deadpool.jpg", genre: "Action", language: "English", duration: "2h 14m", id: 1 },
+      { title: "Deadpool & Wolverine", poster: "images/deadpool.jpg", genre: "Action", language: "English", duration: "2h 14m", id: 1 },
+      { title: "Deadpool & Wolverine", poster: "images/deadpool.jpg", genre: "Action", language: "English", duration: "2h 14m", id: 1 }
+
+    ];
+
+    const comingSoon = [
+      { title: "Captain Miller", poster: "Captain Miller.jpeg", genre: "Action/Adventure", language: "Tamil", duration: "Coming Soon", id: 4 },
+      { title: "The Garfield Movie", poster: "The Garfield Movie.jpeg", genre: "Comedy", language: "English", duration: "Coming Soon", id: 5 },
+      { title: "Inside Out 2", poster: "Inside Out 2.jpeg", genre: "Animation", language: "English", duration: "Coming Soon", id: 6 },
+      { title: "Maalik", poster: "Maalik.jpeg", genre: "Action", language: "Hindi", duration: "Coming Soon", id: 1 },
+      { title: "Jolly LLB 3", poster: "Jolly LLB 3.jpeg", genre: "Comedy/Drama", language: "Hindi", duration: "Coming Soon", id: 1 },
+      { title: "Weapons", poster: "Weapons.jpeg", genre: "Horror/Mystery", language: "English", duration: "Coming Soon", id: 1 },
+      { title: "War 2", poster: "War 2.jpeg", genre: "Action", language: "Hindi", duration: "Coming Soon", id: 1 },
+      { title: "The Delhi Files", poster: "The Delhi Files.jpeg", genre: "Action", language: "Hindi", duration: "Coming Soon", id: 1 },
+      { title: "Dhamaal 4", poster: "Dhamaal 4.jpeg", genre: "Action/Comedy", language: "Hindi", duration: "Coming Soon", id: 1 },
+      { title: "Wolf 2", poster: "Wolf 2.jpeg", genre: "Action", language: "English", duration: "Coming Soon", id: 1 },
+      { title: "Baaghi 4", poster: "Baaghi 4.jpeg", genre: "Action", language: "Hindi", duration: "Coming Soon", id: 1 },
+      { title: "Deadpool & Wolverine", poster: "images/deadpool.jpg", genre: "Action", language: "English", duration: "Coming Soon", id: 1 },
+      { title: "Deadpool & Wolverine", poster: "images/deadpool.jpg", genre: "Action", language: "English", duration: "Coming Soon", id: 1 },
+      { title: "Deadpool & Wolverine", poster: "images/deadpool.jpg", genre: "Action", language: "English", duration: "Coming Soon", id: 1 },
+      { title: "Deadpool & Wolverine", poster: "images/deadpool.jpg", genre: "Action", language: "English", duration: "Coming Soon", id: 1 },
+      { title: "Deadpool & Wolverine", poster: "images/deadpool.jpg", genre: "Action", language: "English", duration: "Coming Soon", id: 1 },
+      { title: "Deadpool & Wolverine", poster: "images/deadpool.jpg", genre: "Action", language: "English", duration: "Coming Soon", id: 1 },
+      { title: "Deadpool & Wolverine", poster: "images/deadpool.jpg", genre: "Action", language: "English", duration: "Coming Soon", id: 1 }
+    ];
+
+    function renderMovies(movies, containerId) {
+      const container = document.getElementById(containerId);
+      movies.forEach(movie => {
+        const card = document.createElement("div");
+        card.className = "movie-card";
+        card.innerHTML = `
+          <img src="${movie.poster}" alt="${movie.title}">
+          <h3>${movie.title}</h3>
+          <p>${movie.genre} | ${movie.language}</p>
+          <p>${movie.duration}</p>
+          <button onclick="bookNow(${movie.id}, '${movie.title}')">Book Now</button>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function bookNow(id, title) {
+      localStorage.setItem("movieId", id);
+      localStorage.setItem("movieTitle", title);
+      window.location.href = "booking.html";
+    }
+
+    renderMovies(nowShowing, "nowShowingSlider");
+    renderMovies(comingSoon, "comingSoonSlider");
+
+    // Hamburger menu toggle logic
+    function toggleMenu() {
+      const menu = document.getElementById("dropdownMenu");
+      menu.style.display = menu.style.display === "block" ? "none" : "block";
+    }
+
+    // Optional: Hide dropdown when clicking outside
+    document.addEventListener("click", function(event) {
+      const menu = document.getElementById("dropdownMenu");
+      const hamburger = document.querySelector(".hamburger");
+      if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
+        menu.style.display = "none";
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <header>
+    <h1>Book Movies Show Admin Panel</h1>
+    <nav class="admin-nav">
+      <a href="index.html">Home</a>
+      <a href="movies.html">Movies</a>
+      <a href="booking.html">Booking</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section>
+      <h2>Add New Movie</h2>
+      <form onsubmit="addMovie(event)">
+        <input type="text" id="title" placeholder="Movie Title" required>
+        <input type="text" id="genre" placeholder="Genre" required>
+        <input type="text" id="language" placeholder="Language" required>
+        <input type="text" id="duration" placeholder="Duration (e.g., 2h 30m)" required>
+        <input type="url" id="poster" placeholder="Poster Image URL" required>
+        <textarea id="description" placeholder="Description" rows="3" required></textarea>
+        <button type="submit">Add Movie</button>
+      </form>
+    </section>
+
+    <hr>
+
+    <section>
+      <h2>Add Show for Movie</h2>
+      <form onsubmit="addShow(event)">
+        <input type="number" id="movie_id" placeholder="Movie ID" required>
+        <input type="date" id="date" required>
+        <input type="time" id="time" required>
+        <input type="text" id="screen" placeholder="Screen Name/Number" required>
+        <button type="submit">Add Show</button>
+      </form>
+    </section>
+
+    <hr>
+
+    <section>
+      <h2>Delete Movie</h2>
+      <form onsubmit="deleteMovie(event)">
+        <input type="number" id="delete_id" placeholder="Enter Movie ID to Delete" required>
+        <button type="submit">Delete Movie</button>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    async function addMovie(e) {
+      e.preventDefault();
+      const movie = {
+        title: document.getElementById('title').value,
+        genre: document.getElementById('genre').value,
+        language: document.getElementById('language').value,
+        duration: document.getElementById('duration').value,
+        poster: document.getElementById('poster').value,
+        description: document.getElementById('description').value
+      };
+
+      const res = await fetch('http://localhost:5000/api/movies/add', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(movie)
+      });
+
+      const data = await res.json();
+      alert(data.message);
+    }
+
+    async function addShow(e) {
+      e.preventDefault();
+      const show = {
+        movie_id: document.getElementById('movie_id').value,
+        date: document.getElementById('date').value,
+        time: document.getElementById('time').value,
+        screen: document.getElementById('screen').value
+      };
+
+      const res = await fetch('http://localhost:5000/api/shows/add', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(show)
+      });
+
+      const data = await res.json();
+      alert(data.message);
+    }
+
+    async function deleteMovie(e) {
+      e.preventDefault();
+      const id = document.getElementById('delete_id').value;
+
+      const res = await fetch(`http://localhost:5000/api/movies/${id}`, {
+        method: 'DELETE'
+      });
+
+      const data = await res.json();
+      alert(data.message);
+    }
+  </script>
+</body>
+</html>

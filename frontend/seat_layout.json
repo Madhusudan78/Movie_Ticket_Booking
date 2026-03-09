@@ -1,0 +1,256 @@
+{
+  "rows": 5,
+  "cols": 10,
+  "seats": [
+    {
+      "id": "A1",
+      "category": "Premium (Recliner)",
+      "price": 500
+    },
+    {
+      "id": "A2",
+      "category": "Premium (Recliner)",
+      "price": 500
+    },
+    {
+      "id": "A3",
+      "category": "Premium (Recliner)",
+      "price": 500
+    },
+    {
+      "id": "A4",
+      "category": "Premium (Recliner)",
+      "price": 500
+    },
+    {
+      "id": "A5",
+      "category": "Premium (Recliner)",
+      "price": 500
+    },
+    {
+      "id": "A6",
+      "category": "Premium (Recliner)",
+      "price": 500
+    },
+    {
+      "id": "A7",
+      "category": "Premium (Recliner)",
+      "price": 500
+    },
+    {
+      "id": "A8",
+      "category": "Premium (Recliner)",
+      "price": 500
+    },
+    {
+      "id": "A9",
+      "category": "Premium (Recliner)",
+      "price": 500
+    },
+    {
+      "id": "A10",
+      "category": "Premium (Recliner)",
+      "price": 500
+    },
+    {
+      "id": "B1",
+      "category": "Gold Class",
+      "price": 400
+    },
+    {
+      "id": "B2",
+      "category": "Gold Class",
+      "price": 400
+    },
+    {
+      "id": "B3",
+      "category": "Gold Class",
+      "price": 400
+    },
+    {
+      "id": "B4",
+      "category": "Gold Class",
+      "price": 400
+    },
+    {
+      "id": "B5",
+      "category": "Gold Class",
+      "price": 400
+    },
+    {
+      "id": "B6",
+      "category": "Gold Class",
+      "price": 400
+    },
+    {
+      "id": "B7",
+      "category": "Gold Class",
+      "price": 400
+    },
+    {
+      "id": "B8",
+      "category": "Gold Class",
+      "price": 400
+    },
+    {
+      "id": "B9",
+      "category": "Gold Class",
+      "price": 400
+    },
+    {
+      "id": "B10",
+      "category": "Gold Class",
+      "price": 400
+    },
+    {
+      "id": "C1",
+      "category": "Gold Class",
+      "price": 400
+    },
+    {
+      "id": "C2",
+      "category": "Gold Class",
+      "price": 400
+    },
+    {
+      "id": "C3",
+      "category": "Gold Class",
+      "price": 400
+    },
+    {
+      "id": "C4",
+      "category": "Gold Class",
+      "price": 400
+    },
+    {
+      "id": "C5",
+      "category": "Gold Class",
+      "price": 400
+    },
+    {
+      "id": "C6",
+      "category": "Gold Class",
+      "price": 400
+    },
+    {
+      "id": "C7",
+      "category": "Gold Class",
+      "price": 400
+    },
+    {
+      "id": "C8",
+      "category": "Gold Class",
+      "price": 400
+    },
+    {
+      "id": "C9",
+      "category": "Gold Class",
+      "price": 400
+    },
+    {
+      "id": "C10",
+      "category": "Gold Class",
+      "price": 400
+    },
+    {
+      "id": "D1",
+      "category": "Standard",
+      "price": 250
+    },
+    {
+      "id": "D2",
+      "category": "Standard",
+      "price": 250
+    },
+    {
+      "id": "D3",
+      "category": "Standard",
+      "price": 250
+    },
+    {
+      "id": "D4",
+      "category": "Standard",
+      "price": 250
+    },
+    {
+      "id": "D5",
+      "category": "Standard",
+      "price": 250
+    },
+    {
+      "id": "D6",
+      "category": "Standard",
+      "price": 250
+    },
+    {
+      "id": "D7",
+      "category": "Standard",
+      "price": 250
+    },
+    {
+      "id": "D8",
+      "category": "Standard",
+      "price": 250
+    },
+    {
+      "id": "D9",
+      "category": "Standard",
+      "price": 250
+    },
+    {
+      "id": "D10",
+      "category": "Standard",
+      "price": 250
+    },
+    {
+      "id": "E1",
+      "category": "Standard",
+      "price": 250
+    },
+    {
+      "id": "E2",
+      "category": "Standard",
+      "price": 250
+    },
+    {
+      "id": "E3",
+      "category": "Standard",
+      "price": 250
+    },
+    {
+      "id": "E4",
+      "category": "Standard",
+      "price": 250
+    },
+    {
+      "id": "E5",
+      "category": "Standard",
+      "price": 250
+    },
+    {
+      "id": "E6",
+      "category": "Standard",
+      "price": 250
+    },
+    {
+      "id": "E7",
+      "category": "Standard",
+      "price": 250
+    },
+    {
+      "id": "E8",
+      "category": "Standard",
+      "price": 250
+    },
+    {
+      "id": "E9",
+      "category": "Standard",
+      "price": 250
+    },
+    {
+      "id": "E10",
+      "category": "Standard",
+      "price": 250
+    }
+  ]
+}
